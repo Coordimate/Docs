@@ -1,3 +1,6 @@
+store-pdfs:
+	mv *.pdf export-pdfs
+
 all:
 	pdflatex 1-Vision.tex
 	pdflatex 2-Requirements.tex

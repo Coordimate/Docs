@@ -1,10 +1,11 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{paralist} % Required for compact lists
 \graphicspath{ {./images/} }
 
 \title{Coordimate\\Vision Document}
 \date{December 2023}
-\author{Mobiles Gang}
+\author{Ali Bassam, Vlada Prikhodchenko, Valentin Vikhorev}
 
 \begin{document}
 
@@ -16,35 +17,99 @@
 
 \section{Introduction}
 
-In this section provide introductory details about the software (application,
-system, etc.). This can include where the inspiration for the initial idea
-originated.
+\textit{In this section provide introductory details about the software
+(application, system, etc.). This can include where the inspiration for the
+initial idea originated.}
+
+Coordimate is a scheduling app that aims to ease the finalisation of meetings
+according to availability marked by users on their personal in-app schedules.
 
 \section{Product / Solution Overview}
 
-In this section provide an overview of what solutions are provided by the
-software. Who is the target audience? How will the software help them? What are
-the expected improvements (time, efficiency, ease of access, etc.) to be
-expected by the target audience?
+\textit{In this section provide an overview of what solutions are provided by
+the software. Who is the target audience? How will the software help them? What
+are the expected improvements (time, efficiency, ease of access, etc.) to be
+expected by the target audience?}
+
+While other applications of this kind (Lettuce meet) do exist, they often have
+to face the problem of the users indicating which times they prefer to meet,
+rather than which times they’re actually free. To solve this, Coordimate
+prompts users to create a schedule indicating their busy hours during the week,
+instead of their free ones, allowing the user to create and share a link of
+their schedule in groups they are a part of, where the app automatically
+highlights the common availability of the selected participants.
 
 \section{Business Needs / Requirements}
 
-Provide here a brief overview of the user requirements/needs that the software
-will solve. The detailed list of requirements will be outlined in the
-requirements document.
+\textit{Provide here a brief overview of the user requirements/needs that the
+software will solve. The detailed list of requirements will be outlined in the
+requirements document.}
+
+\begin{compactenum}% 
+    \item Share a user's busy-time schedule
+    \item Create and manage project groups and group calendars
+    \item Set up meetings with an agenda, and notify group members
+    \item Chat with group members, hold polls, and store meeting notes
+\end{compactenum}
 
 \section{Major Features}
 
-Many applications or systems have multiple parts and features. Here describe
-briefly each of the major features that will provide the user with
-functionality.
+\textit{Many applications or systems have multiple parts and features. Here
+describe briefly each of the major features that will provide the user with
+functionality.}
+
+\begin{itemize}
+    \item{Create a personal schedule, selecting busy hours according to predefined
+        hours of days in a week.}
+    \item{Create and share a link of the personal schedule to share with other
+        users.}
+    \item{Create, join, and share groups, for the purpose of indicating common
+        available time slots according to all (or a selection of) the group
+        members’ schedules.}
+    \item{Prompt, set-up and confirm meetings according to a selected constraint
+        (earliest date possible, after 6pm, not on weekends, etc…)}
+    \item{Integration with meeting platforms (Google Meet, Webex, etc) through API
+        to create scheduled meetings.}
+    \item{Having meeting link available in the app, and only accessible/visible to
+        members of the group that voted for the meeting (access can be modified
+        according to group admins)}
+    \item{Suggestions for meeting times based on historical data, user preferences,
+        and re-filling schedules.}
+    \item{Synchronise external calendars (Google Calendar, Outlook, etc.)}
+    \item{Automated reminders for upcoming meetings, changes in schedules, or
+        pending meeting confirmations.}
+    \item{Integrate location-based services - the app suggests cafes for your group
+        to meet up offline (approximately same distance from all group members).}
+    \item{In-app messaging system to facilitate communication.}
+    \item{Polls within the app regarding meetings preferences, creating generic polls.}
+    \item{Provide a summary of the meeting based on the meeting transcript.}
+    \item{Integrate "link-placeholder" feature that allows users to have links
+        pre-saved in each meeting slot.}
+    \item{Offline Mode (change and edit schedule without internet connection).}
+    \item{Meeting agenda: set up a meeting agenda with bullet points for tasks.
+        Keep track of timestamps when meeting points are crossed out. Each meeting
+        has optional fields for the title and the agenda. The agenda is organised
+        as a multi-level bulleted list.}
+    \item{(bonus) “Random coffee”: if a person wants to go for a coffee break,
+        they can place special time slots. If another person from one of the teams
+        of the user also has slots for coffee at the same time, they get
+        matched and receive notifications. They can accept or decline the
+        invitations. Users can add people to “blacklist” if they don’t want to
+        be matched with them.}
+\end{itemize}
 
 \section{Scope and Limitations}
 
-It is good to define a scope for software development to avoid excess feature
-drift and detect when potential redesign maybe needed due to an increasing
-scope. Also, list the limitations of the proposed architecture in order to
-identify some of the shortfalls of the proposed system.
+\textit{It is good to define a scope for software development to avoid excess
+feature drift and detect when potential redesign maybe needed due to an
+increasing scope. Also, list the limitations of the proposed architecture in
+order to identify some of the shortfalls of the proposed system.}
+
+The proposed software system consists a of cross-platform mobile application, 
+and a backend API service. The system is limited in scope to scheduling
+meetings, and providing utilities for team collaboration during meetings.
+
+The system is not a meeting platform, nor is it a full calendar suite.
 
 \end{document}
 
