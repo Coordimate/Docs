@@ -13,3 +13,4 @@ clean:
 	rm -f *.fdb_latexmk
 	rm -f *.log
 	rm -f *.pdf
+	rm -f *.gz
