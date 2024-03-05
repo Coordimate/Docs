@@ -1,0 +1,124 @@
+# Created with https://github.com/BurntSushi/erd
+# to update, run command: `docker run -i ghcr.io/burntsushi/erd:latest < examples/nfldb.er >| out.pdf`
+
+title {label: "Coordimate - ER-diagram. v1.1", size: "20"}
+
+# Nice colors from Erwiz:
+# red #fcecec
+# blue #ececfc
+# green #d0e0d0
+# yellow #fbfbdb
+# orange #eee0a0
+
+# Entities
+
+[User] {bgcolor: "#fbfbdb"}
+  user_id {label: "int"}
+  username {label: "varchar"}
+  email {label: "varchar"}
+  password {label: "varchar"}
+  schedule_link {label: "varchar"}
+  allow_location_access {label: "bool"}
+
+[UserGroup]
+  notify_chat {label: "bool"}
+  notify_polls {label: "bool"}
+  notify_meetings {label: "bool"}
+  notify_changes {label: "bool"}
+  is_admin {label: "bool"}
+
+[ExternalCalendar] {bgcolor: "#d0e0d0"}
+  link {label: "varchar"}
+  type {label: "enum"}
+
+[Group] {bgcolor: "#fbfbdb"}
+  group_id {label: "int"}
+  name {label: "varchar"}
+
+[Message] {bgcolor: "#d0e0d0"}
+  message_id {label: "int"}
+  text {label: "varchar"}
+  author {label: "varchar"}
+  timestamp {label: "datetime"}
+
+[Poll] {bgcolor: "#d0e0d0"}
+  poll_id {label: "int"}
+  question {label: "varchar"}
+
+[PollOption] {bgcolor: "#d0e0d0"}
+  poll_option_id {label: "int"}
+  text {label: "varchar" }
+  vote_count {label: "int"}
+
+[UserMeeting]
+  accepted {label: "bool"}
+  refused {label: "bool"}
+
+[Meeting] {bgcolor: "#fbfbdb"}
+  meeting_id {label: "int"}
+  constraint {label: "varchar"}
+  link {label: "varchar"}
+  summary {label: "varchar"}
+  location {label: "varchar"}
+
+[AgendaPoint] {bgcolor: "#d0e0d0"}
+  point_id {label: "int"}
+  text {label: "varchar"}
+  cross_out_timestamp {label: "datetime"}
+
+[Constraints] {bgcolor: "#d0e0d0"}
+  meeting_id {label: "int"}
+  after_time {label: "datetime"}
+  before_time {label: "datetime"}
+  earliest_date_possible {label: "bool"}
+  not_on_weekends {label: "bool"}
+
+[TimeSlot] {bgcolor: "#fbfbdb"}
+  time_slot_id {label: "int"}
+  is_random_coffee {label: "bool"}
+  is_meeting {label: "bool"}
+  start {label: "datetime"}
+  end {label: "datetime"}
+
+[RandomCoffee] {bgcolor: "#d0e0d0"}
+  random_coffee_id {label: "int"}
+  first_accepted {label: "bool"}
+  first_refused {label: "bool"}
+  second_accepted {label: "bool"}
+  second_refused {label: "bool"}
+
+# Relationships
+
+User 1--* UserGroup
+UserGroup *--1 Group
+
+User 1--* TimeSlot {label: "busy"}
+Group 1--* TimeSlot {label: "free"}
+User 1--* TimeSlot {label: "meeting"}
+Group 1--* TimeSlot {label: "meeting"}
+User 1--* TimeSlot {label: "schedule_change"}
+
+Meeting *--1 TimeSlot {label: "meeting_time"}
+Meeting *--1 TimeSlot {label: "suggested_time"}
+RandomCoffee *--1 TimeSlot
+
+User 1--* RandomCoffee {label: "first_member"}
+User 1--* RandomCoffee {label: "second_member"}
+User 1--* User {label: "random_coffee_blacklist"}
+User 1--* ExternalCalendar
+
+Group 1--* Message
+Group 1--* Poll
+Group 1--* Meeting
+
+Poll 1--+ PollOption
+User *--* PollOption {label: "voted_for"}
+
+User 1--* UserMeeting 
+UserMeeting *--1 Meeting
+
+Meeting 1--* AgendaPoint
+Meeting 1--1 Constraints
+
+AgendaPoint 1--* AgendaPoint {label: "subpoint"}
+
