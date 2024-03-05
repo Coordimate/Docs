@@ -53,6 +53,7 @@ title {label: "Coordimate - ER-diagram. v1.1", size: "20"}
 [UserMeeting]
   accepted {label: "bool"}
   refused {label: "bool"}
+  is_admin {label: "bool"}
 
 [Meeting] {bgcolor: "#fbfbdb"}
   meeting_id {label: "int"}
