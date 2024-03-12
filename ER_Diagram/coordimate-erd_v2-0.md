@@ -96,6 +96,7 @@
 {
   "_id": ObjectId(group),
   "name": "kittens",
+  "admin_id": ObjectId(user),
   
   "members": [
     {
@@ -129,7 +130,7 @@
       "id": ObjectId(poll),
       "name": "vote for the president"
     }
-  ]
+  ],
   
   "messages": [
     {
