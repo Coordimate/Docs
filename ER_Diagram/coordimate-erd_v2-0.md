@@ -58,8 +58,9 @@
     {
       "_id": ObjectId(time_slot),
       "is_meeting": false,
-      "start": "2023-04-01 05:00:30.001000",
-      "end": "2023-04-01 06:00:30.001000"
+      "day": 1,
+      "start": 9.0,
+      "length": 2.5
     }
   ]
 }
