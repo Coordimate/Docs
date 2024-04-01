@@ -72,6 +72,8 @@
 ```javascript
 {
   "_id": ObjectId(meeting),
+  "title": "Group title",
+  // "description": "There will be a discussion about dogs",
   "group_id": ObjectId(group),
   "admin_id": ObjectId(user), 
   "link": "https://zoom.us/blah-blah",
@@ -86,6 +88,27 @@
       "crossed_out_time": "2023-04-01 05:00:30.001000",
       "position": 1,
       "level": 1
+    }
+  ],
+
+  "participants": [
+    {
+      "participant_id": ObjectsId(user),
+      "name": "casual_meeter"
+    }
+  ],
+
+  "declined": [
+    {
+      "participant_id": ObjectsId(user),
+      "name": "casual_meeter"
+    }
+  ],
+
+  "pending": [
+    {
+      "participant_id": ObjectsId(user),
+      "name": "casual_meeter"
     }
   ]
 }
